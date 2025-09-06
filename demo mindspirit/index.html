@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locality - Discover Local Businesses in Nadiad</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Locality</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#discover" class="nav-link">Discover</a></li>
+                <li><a href="#businesses" class="nav-link">Businesses</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="nav-auth" id="navAuth">
+                    <a href="login.html" class="nav-link auth-link" id="loginLink">Login</a>
+                    <a href="signup.html" class="btn btn-primary nav-signup" id="signupLink">Sign Up</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Discover Amazing Local Businesses in <span class="highlight">Nadiad</span></h1>
+                <p class="hero-description">Support your community by discovering and patronizing local small businesses. Find restaurants, shops, services, and more in your neighborhood.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('discover')">
+                        <i class="fas fa-search"></i>
+                        Explore Now
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('businesses')">
+                        <i class="fas fa-store"></i>
+                        List Your Business
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="map-container">
+                    <div id="map" class="map"></div>
+                    <div class="map-overlay">
+                        <div class="location-pin">
+                            <i class="fas fa-map-pin"></i>
+                            <span>Nadiad, Gujarat</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="discover" class="search-section">
+        <div class="container">
+            <h2 class="section-title">Find Local Businesses</h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search for restaurants, shops, salons, cinema, DMart...">
+                    <button class="search-btn" onclick="searchBusinesses()">Search</button>
+                </div>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">All</button>
+                    <button class="filter-tab" data-category="restaurants">Restaurants</button>
+                    <button class="filter-tab" data-category="shopping">Shopping</button>
+                    <button class="filter-tab" data-category="dmart">DMart</button>
+                    <button class="filter-tab" data-category="salon">Salon</button>
+                    <button class="filter-tab" data-category="cinema">Cinema</button>
+                    <button class="filter-tab" data-category="healthcare">Healthcare</button>
+                    <button class="filter-tab" data-category="services">Services</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Businesses Grid -->
+    <section id="businesses" class="businesses-section">
+        <div class="container">
+            <h2 class="section-title">Featured Local Businesses</h2>
+            <div class="businesses-grid" id="businessesGrid">
+                <!-- Business cards will be populated by JavaScript -->
+            </div>
+            <div class="load-more">
+                <button class="btn btn-outline" onclick="loadMoreBusinesses()">
+                    <i class="fas fa-plus"></i>
+                    Load More Businesses
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Locality?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Interactive Map</h3>
+                    <p>Explore businesses on an interactive map to see exactly where they're located in Nadiad.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Verified Reviews</h3>
+                    <p>Read authentic reviews from real customers to make informed decisions about local businesses.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Support Local</h3>
+                    <p>Help strengthen your community by supporting local entrepreneurs and small business owners.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access our platform anywhere with our fully responsive design that works on all devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Locality</h2>
+                    <p>Locality is dedicated to connecting residents of Nadiad with the amazing local businesses that make our community vibrant and unique. We believe that supporting local businesses strengthens our economy, preserves our community character, and creates lasting relationships.</p>
+                    <p>Our platform makes it easy to discover new places, read reviews, and support the entrepreneurs who are the backbone of our local economy.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>25+</h3>
+                            <p>Local Businesses</p>
+                        </div>
+                        <div class="stat">
+                            <h3>2,500+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="stat">
+                            <h3>4.5</h3>
+                            <p>Average Rating</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-city"></i>
+                        <p>Nadiad City</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Nadiad, Gujarat, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@localitynadiad.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Locality</span>
+                    </div>
+                    <p>Connecting Nadiad residents with amazing local businesses.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#discover">Discover</a></li>
+                        <li><a href="#businesses">Businesses</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">DMart</a></li>
+                        <li><a href="#">Salon</a></li>
+                        <li><a href="#">Cinema</a></li>
+                        <li><a href="#">Healthcare</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Nadiad, Gujarat</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> hello@localitynadiad.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Locality. All rights reserved. Made with ❤️ for Nadiad.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Authentication integration
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthUI();
+        });
+
+        function updateAuthUI() {
+            const navAuth = document.getElementById('navAuth');
+            const loginLink = document.getElementById('loginLink');
+            const signupLink = document.getElementById('signupLink');
+            
+            if (window.authFunctions && window.authFunctions.isAuthenticated()) {
+                const user = window.authFunctions.currentUser();
+                navAuth.innerHTML = `
+                    <div class="user-menu">
+                        <span class="user-greeting">Welcome, ${user.firstName}!</span>
+                        <div class="user-dropdown">
+                            <button class="user-avatar" onclick="toggleUserMenu()">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <div class="dropdown-menu" id="userDropdown">
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-user"></i>
+                                    Profile
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-heart"></i>
+                                    Favorites
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-cog"></i>
+                                    Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item" onclick="logout()">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                navAuth.innerHTML = `
+                    <a href="login.html" class="nav-link auth-link" id="loginLink">Login</a>
+                    <a href="signup.html" class="btn btn-primary nav-signup" id="signupLink">Sign Up</a>
+                `;
+            }
+        }
+
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function logout() {
+            if (window.authFunctions) {
+                window.authFunctions.logout();
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('userDropdown');
+            if (dropdown && !e.target.closest('.user-dropdown')) {
+                dropdown.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
